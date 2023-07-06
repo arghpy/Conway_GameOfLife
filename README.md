@@ -10,3 +10,7 @@ The project was developed on Linux and thus is suited for UNIX operating systems
 In order to compile, use `gcc` or `clang`.
 
 E.g.: `gcc GameOfLife.c -o GameOfLife -lraylib`
+
+
+If you experience a segmentation fault, you need to allow an unlimited memory for the stack.
+`$: ulimit -s unlimited`
