@@ -4,6 +4,8 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+#include <pthread.h>
+#include <sys/sysinfo.h>
 
 
 typedef struct Cell
@@ -36,11 +38,21 @@ int main()
 {
     srand(time(0));
 
+    /* get the number of cores */
+    int cores = get_nprocs();
+
     Cell grid[ROWS][COLS];
 
     InitWindow(screen_width, screen_height, "Title");
 
     SetTargetFPS(60);
+
+    // Threads initial setup
+    pthread_t threads[cores];
+    int rc;
+    pthread_attr_t attr;
+    pthread_attr_init(&attr);
+    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
 
     //Initialization of the grid
     for (int i = 0; i < ROWS; i++) {
