@@ -38,9 +38,6 @@ int main()
 {
     srand(time(0));
 
-    /* get the number of cores */
-    int cores = get_nprocs();
-
     Cell grid[ROWS][COLS];
 
     InitWindow(screen_width, screen_height, "Title");
