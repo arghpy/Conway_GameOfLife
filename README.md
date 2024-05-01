@@ -15,3 +15,4 @@ E.g.: `gcc GameOfLife.c -o GameOfLife -lraylib`
 If you experience a segmentation fault, you need to allow an unlimited memory for the stack.
 `$: ulimit -s unlimited`
 
+
