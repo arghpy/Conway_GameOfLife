@@ -1,5 +1,5 @@
 #include <pthread.h>
-#include "raylib.h"
+#include <raylib.h>
 #include <stdlib.h>
 #include <sys/sysinfo.h>
 #include <time.h>
@@ -11,16 +11,14 @@ typedef struct Cell {
   int alive;
 } Cell;
 
-#define ROWS 2500
-#define COLS 2500
-#define POPULATION 500000
+#define ROWS 800
+#define COLS 600
+#define POPULATION 15000
 
-const int width = 5000;
-const int height = 5000;
-const int screen_width = 1900;
-const int screen_height = 1000;
-const int cell_width = width / ROWS;
-const int cell_height = height / COLS;
+const int screen_width = 800;
+const int screen_height = 600;
+const int cell_width = 5;
+const int cell_height = 5;
 
 void CellDraw(Cell cell);
 void CellAlive(Cell *cell);
@@ -62,7 +60,7 @@ int main() {
 
   while (!WindowShouldClose()) {
     BeginDrawing();
-    ClearBackground(BLACK);
+    ClearBackground((Color) {18, 18, 18, 0xFF});
 
     // Draw the grid
     for (int i = 0; i < ROWS; i++) {
@@ -101,8 +99,8 @@ int main() {
       }
     }
 
+    usleep(500);
     EndDrawing();
-    // sleep(1);
   }
 
   CloseWindow();
@@ -116,7 +114,7 @@ void CellDraw(Cell cell) {
                   cell_height, WHITE);
   } else if (cell.alive == 0) {
     DrawRectangle(cell.x * cell_width, cell.y * cell_height, cell_width,
-                  cell_height, BLACK);
+                  cell_height, (Color) {18, 18, 18, 0xFF});
   }
 }
 
